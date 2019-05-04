@@ -5,11 +5,21 @@ import Actions from './Actions';
 import Repos from './Repos';
 import PropTypes from "prop-types";
 
-const AppContent = ({ userinfo, repos, starred, handleSearch}) =>(
+const AppContent = ({ 
+  userinfo,
+  repos, 
+  starred,
+  isFetching,
+  handleSearch,
+  getRepos, 
+  getStarred,
+  
+}) =>(
     <div className="App">
-    <Search handleSearch = {handleSearch} />
+    <Search isDisabled ={isFetching} handleSearch = {handleSearch} />
+    {isFetching && <div>Carregando...</div>}
     { !!userinfo && <UserInfo userinfo = { userinfo } />  } 
-    { !!userinfo && <Actions /> }
+    { !!userinfo && <Actions getRepos ={ getRepos } getStarred ={ getStarred}/> }
 
     { !repos.lenght &&
     <Repos className="repos" 

@@ -9,7 +9,7 @@ const Repos = ({className, title, repos}) => (
             <li key={index}> <a href={repo.link}> {repo.name}</a></li>
           ))}
       </ul>
-  </div>
+    </div>
 
 )
 
