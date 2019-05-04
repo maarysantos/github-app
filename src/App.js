@@ -25,9 +25,6 @@ class App extends Component {
       const value = e.target.value
       const keyCode = e.which || e.keyCode
       const enter = 13
-      //anulando referencia do evento do objeto anterior. Objeto sincrono dentro de um
-      //método assincrono
-      e.persist()
       if (keyCode === enter){
         this.setState({
           isFetching : true
@@ -49,10 +46,8 @@ class App extends Component {
       })
       .always(()=>{
         this.setState({ isFetching:false })
-        e.target.disabled = false
       })
       }
-      
     }
 
   getRepos(type){
